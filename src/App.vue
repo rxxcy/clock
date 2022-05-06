@@ -1,15 +1,13 @@
 <template>
   <div class="container">
-    <span>
-      <apan class="t" v-for="(i, x) in clock">
-        <span :class="[x % 2 == 1 ? 'x' : '']">{{ i }}</span>
-      </apan>
+    <span class="s">
+      <span class="t" v-for="(i, x) in clock">
+        <span :class="[x % 2 == 1 && x != 5 ? 'x' : '']">{{ i }}</span>
+      </span>
     </span>
     <div class="clock">
       <div class="col" v-for="(i, n) in clock">
-        <div v-for="x in 4" :class="render(i, x)">
-          <!-- {{ render(i, x) }} {{ x }} -->
-        </div>
+        <div v-for="x in 4" :class="render(i, x)"></div>
       </div>
     </div>
   </div>
@@ -65,11 +63,17 @@ const algorithm = (arr, result) => {
 }
 
 const render = (sum, index) => {
+  const map = {
+    1: 8,
+    2: 4,
+    3: 2,
+    4: 1,
+  }
+  const t = map[index]
   const a = [1, 2, 4, 8]
   const n = algorithm(a, sum)
   const s = new Set(n)
-  // console.log(s)
-  return s.has(index) ? 'active item' : 'item'
+  return s.has(t) ? 'active item' : 'item'
 }
 
 const time = () => {
@@ -92,13 +96,17 @@ onMounted(() =>
 html body {
   margin: 0;
 }
+.s {
+  margin-left: 0.5em;
+}
 .t {
   user-select: none;
   color: #abb8c3;
   font-size: 0.5em;
 }
-.x ::after {
+.x::after {
   content: ':';
+  margin: 0.2em;
 }
 .container {
   height: 100vh;
