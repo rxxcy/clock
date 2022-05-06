@@ -111,20 +111,24 @@ html body {
 .container {
   height: 100vh;
   display: flex;
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8; */
+  background-color: rgb(41, 41, 41);
 }
 .clock {
   margin: auto;
   display: flex;
 }
 .item {
-  background: #fff;
-  color: #000;
+  /* background: #fff; */
+  /* background: rgb(55, 92, 104); */
+  background: rgb(66, 66, 66);
   width: 20px;
   height: 20px;
   margin: 0.2em;
 }
 .active {
-  background-color: #fcb900;
+  /* background-color: #fcb900; */
+  /* background-color: rgb(55, 143, 192); */
+  background-color: #fff;
 }
 </style>
